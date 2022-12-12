@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Spring Pizza</title>
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+	</head>
+	<body>	
+		<!-- header -->
+		<header th:fragment="header-nav">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light font-monospace mb-3">
+			  <div class="container-fluid">
+			    <a class="navbar-brand text-uppercase fw-semibold" th:href="@{/}">pizza spring</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarNav">
+			      <ul class="navbar-nav">			        
+				        <li class="nav-item">
+				          <a class="nav-link active" th:href="@{/}">Pizze</a>         
+				        </li>			        
+				         <li class="nav-item">
+				          <a class="nav-link active" th:href="@{/drink}">Drinks</a>         
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link text-danger " th:href="@{/pizza/search}">Search Pizze</a>         
+				        </li>	
+				        <li class="nav-item">
+				          <a class="nav-link text-primary" th:href="@{/drink/search}">Search Drinks</a>         
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link text-success" th:href="@{/product/search}">Search All</a>         
+				        </li>					        
+			      </ul>    
+			    </div>
+ 			  </div>
+ 			</nav>
+ 		</header>
+ 		 <!-- Form -->
+ 		 <th:block th:fragment="form-crud">
+ 		 	<div class="mb-3">
+ 				<label class="form-label">Nome:</label>
+ 				<input class="form-control" type="text" name="nome" th:field="*{nome}">
+ 			</div>
+ 			<div class="mb-3">
+ 				<label class="form-label">Descrizione:</label>
+ 				<input class="form-control" type="text" name="descrizione" th:field="*{descrizione}">
+ 			</div>
+ 			<div class="mb-3">
+ 				<label class="form-label">Prezzo:</label>
+ 				<input class="form-control" type="number" name="prezzo" th:field="*{prezzo}">
+ 			</div>
+ 			<input type="submit" value="save" class="btn btn-success">
+ 		</th:block>
+ 		
+ 		 <!-- Errors-->
+ 		 <th:block th:fragment="error">
+	 		<div th:if="${errors} != NULL OR ${catchError} != NULL" class="col-sm-12 my-auto alert alert-danger" role="alert">
+				<h3 class="text-danger">Errors:</h3>
+				<ul>
+					<li th:each="error : ${errors}" th:object="${error}">[[*{defaultMessage}]]</li>
+					<li th:if="${catchError} != NULL">[[${catchError}]]</li>
+				</ul>
+			</div>	
+ 		</th:block>
+ 		
+ 		
+ 		 
+ 	</body>
+</html>

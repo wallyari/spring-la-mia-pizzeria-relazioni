@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">	
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+	<title>Drink</title>
+	</head>
+	<body>
+	<header th:insert="~{frag :: header-nav}"></header>
+		<main class="container">
+			<div class="d-flex justify-content-center p-3">
+				<h3>Update</h3>
+			</div>
+			<div th:insert="~{frag :: error}"></div>
+		  	<form class="container border mt-5 p-3" 
+		 			method="POST" 
+		 			action="/drink/store" 
+		 			th:object="${drink}">
+		 			<!--th:field aggancia le proprietà agli input corrispondenti-->
+		 			<input type="number" name="id" th:field="*{id}" class="d-none">
+		 			<div th:insert="~{frag :: form-crud}"></div>
+	 		</form>
+		</main>	
+	</body>
+</html>

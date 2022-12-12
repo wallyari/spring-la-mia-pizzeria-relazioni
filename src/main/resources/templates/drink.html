@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+ <!-- Bootstrap CSS -->
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+<title>Drink</title>
+</head>
+<body th:object="${drink}" >
+	<header th:insert="~{frag :: header-nav}"></header>
+	<main>
+	 	<div class="container py-5 text-center col-4">
+      		<h3 class="mb-3 text-uppercase">Specifiche Drink</h3>
+      		<div class="card text-center">
+       		<div class="card-header">Nome: [[*{nome}]]</div>
+        	<div class="card-body">
+          	<p class="card-title">Descrizione:</p>
+         	<p class="card-text">[[*{descrizione}]]</p>
+        </div>
+        <div class="card-footer text-muted">Prezzo: [[*{prezzo}]] €</div>
+      </div>
+      <a class="btn btn-dark mt-3 text-uppercase" th:href="@{/}">go back</a>
+    </div>
+    </main>       
+</body>
+</html>
