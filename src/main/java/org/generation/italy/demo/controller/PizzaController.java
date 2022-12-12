@@ -122,10 +122,10 @@ public class PizzaController {
 	@GetMapping("/pizza/delete/{id}")
 	public String deletePizza(@PathVariable("id") int id) {
 		
-		Optional<Pizza> optPizza = pizzaService.getPizzaById(id);
-		Pizza pizza = optPizza.get();
+		//Optional<Pizza> optPizza = pizzaService.getPizzaById(id);
+		//Pizza pizza = optPizza.get();
 		
-		pizzaService.deletePizzaById(pizza);
+		pizzaService.deletePizzaById(id);
 		
 		return "redirect:/";
 	}

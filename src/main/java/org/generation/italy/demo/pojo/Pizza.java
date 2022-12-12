@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,14 +33,19 @@ public class Pizza {
  	@Min(value=1)
 	@Column
 	private double prezzo;
+
+	@ManyToOne
+ 	@JoinColumn(name="promozione_id", nullable=true)
+ 	private Promozione promozione;
 	
 	public Pizza() { }
-	public Pizza(String nome, String descrizione, double prezzo) {
+	public Pizza(String nome, String descrizione, double prezzo, Promozione promozione) {
 		
 		
 		setNome(nome);
 		setDescrizione(descrizione);
 		setPrezzo(prezzo);
+		setPromozione(promozione);
 	}
 
 
@@ -69,6 +76,15 @@ public class Pizza {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
+	}
+	
+	public String getPromozione() {
+		return descrizione;
+	}
+
+
+	public void setPromozione(Promozione promozione) {
+		this.promozione = promozione;
 	}
 
 
