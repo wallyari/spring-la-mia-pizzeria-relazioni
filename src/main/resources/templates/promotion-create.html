@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  	<meta charset="UTF-8">	
+  	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+  	<title>Promo Create</title>
+  	</head>
+  	<body>
+  	<header th:insert="~{frag :: header-nav}"></header>
+		<main class="container">
+			<div class="d-flex justify-content-center p-3">
+				<h3>Create</h3>
+			</div>
+			<div class="container py-5 text-center col-4">
+					<form method="POST" action="/promotion/create" th:object="${promozione}">
+ 					<label>Titolo</label><br>
+ 					<input type="text" name="title" th:field="*{titolo}" class="mb-3">
+ 					<br>
+ 					<label>Data di inizio</label><br>
+ 					<input type="date" name="dataInizio" th:field="*{dataInizio}" class="mb-3">
+ 					<br>
+ 					<label>Data di fine</label><br>
+ 					<input type="date" name="dataFine" th:field="*{dataFine}" class="mb-3">
+ 					<br>
+                     <label>Pizze</label><br>
+                     <div
+                         th:each="pizza : ${pizzas}"
+                         th:object="${pizza}"
+                         class="mb-3"
+                     >
+                         <input 
+                             type="checkbox" 
+                             name="pizzas" 
+                             th:value="*{id}" 
+                             th:field="${promozione.pizzas}">
+                         <label>[[*{nome}]]</label>
+                     </div>
+ 					<button type="submit">Crea</button>
+                 </form>
+ 			</div>
+			
+		</main>
+  	</body>
+</html>

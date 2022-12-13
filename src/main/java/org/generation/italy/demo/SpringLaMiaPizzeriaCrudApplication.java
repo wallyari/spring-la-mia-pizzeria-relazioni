@@ -65,9 +65,8 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		
 		//-------- test Delete ----------
  		//promoService.deletePromozioneById(1);
-		
-		
- 		//pizzaService.deletePizzaById(4);
+
+ 		pizzaService.deletePizzaById(4);
 		
 		System.out.println("---------------------------");
 		List <Pizza> pizzas = pizzaService.findAll();

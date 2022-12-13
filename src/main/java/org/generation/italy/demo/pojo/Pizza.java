@@ -78,8 +78,8 @@ public class Pizza {
 		this.descrizione = descrizione;
 	}
 	
-	public String getPromozione() {
-		return descrizione;
+	public Promozione getPromozione() {
+		return promozione;
 	}
 
 

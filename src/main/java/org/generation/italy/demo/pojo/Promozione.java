@@ -36,7 +36,7 @@ public class Promozione {
 	@OneToMany(mappedBy = "promozione", cascade = CascadeType.REMOVE)
  	private List<Pizza> pizzas;
 	
-	public Promozione ( ) {}
+	public Promozione ( ) { }
 	public Promozione (LocalDate dataInizio, LocalDate dataFine, String titolo) {
 		
 		setDataInizio(dataInizio);

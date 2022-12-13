@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.generation.italy.demo.pojo.Pizza;
+import org.generation.italy.demo.pojo.Promozione;
 import org.generation.italy.demo.serv.PizzaService;
+import org.generation.italy.demo.serv.PromozioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private PromozioneService promoService;
 	
 	
 	@GetMapping("/")
@@ -52,8 +57,13 @@ public class PizzaController {
 	
 	@GetMapping("/pizza/create")
 	public String createPizza(Model model) {
+		
+		
 		Pizza pizza = new Pizza();
 		model.addAttribute("pizza", pizza);
+		
+		List<Promozione> promozioni = promoService.findAll(); 
+		model.addAttribute("promozioni", promozioni);
 		
 		return "pizza-create";
 	}
@@ -65,7 +75,7 @@ public class PizzaController {
 		if(bindingResult.hasErrors()) {
  			
  			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());			
- 			return "redirect:/drink/create";
+ 			return "redirect:/pizza/create";
  		}
 
  		try {			

@@ -31,6 +31,7 @@ public class PromozioneService {
 	public void deletePromozioneById(int id) {
 		promoRepo.deleteById(id);
 	}
+	
 	@Transactional
  	public List<Promozione> findAllWPizza() {
  		List<Promozione> promozioni = promoRepo.findAll();

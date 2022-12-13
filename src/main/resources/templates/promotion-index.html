@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	 <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+	<title>Promo</title>
+
+	</head>
+	<body>
+	<header th:insert="~{frag :: header-nav}"></header>
+	
+	<main>
+
+	<div class="container p-3 text-center">
+		<div class="d-flex col-12 justify-content-center mb-5">
+			<a th:href="@{/promotion/create}" class="btn btn-danger text-uppercase">Crea Promo</a>
+		</div>	
+	<table th:if="${!promozioni.isEmpty()}" class="table">
+		<tr>
+			<th scope="col">Titolo</th>
+		 	<th scope="col">Data Inizio</th>
+			<th scope="col">Data Fine</th>
+			<th scope="col">Pizze</th>
+		
+		</tr>
+		<tr th:each="promozione : ${promozioni}" th:object="${promozione}">
+			<td th:text="*{titolo}"></td>
+			<td th:text="*{dataInizio}"></td>
+			<td th:text="*{dataFine}"></td>
+			<td >
+ 				<span th:each="pizza : ${promozione.pizzas}"> [[${pizza.nome}]] </span>
+ 			</td>
+		</tr>
+	</table>
+	<h2 th:if="${promozioni.isEmpty()}" class="text-uppercase">Nessuna promo attiva</h2>
+	</div>
+	</main>
+	</body>
+</html>

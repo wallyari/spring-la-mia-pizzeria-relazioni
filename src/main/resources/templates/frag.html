@@ -30,8 +30,11 @@
 				          <a class="nav-link text-primary" th:href="@{/drink/search}">Search Drinks</a>         
 				        </li>
 				        <li class="nav-item">
-				          <a class="nav-link text-success" th:href="@{/product/search}">Search All</a>         
-				        </li>					        
+				          <a class="nav-link text-success" th:href="@{/product/search}">SearchAll</a>         
+				        </li>
+				         <li class="nav-item">
+ 		       				 <a class="nav-link text-warning" th:href="@{/promotion}">Promo</a>
+ 		      			</li>					        
 			      </ul>    
 			    </div>
  			  </div>
@@ -51,7 +54,9 @@
  				<label class="form-label">Prezzo:</label>
  				<input class="form-control" type="number" name="prezzo" th:field="*{prezzo}">
  			</div>
+				<br>
  			<input type="submit" value="save" class="btn btn-success">
+ 			
  		</th:block>
  		
  		 <!-- Errors-->

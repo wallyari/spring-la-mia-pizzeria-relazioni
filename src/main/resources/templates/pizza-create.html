@@ -16,10 +16,34 @@
 	  		<form class="container border mt-3 p-3" 
 	 			  method="POST" 
 	 			  action="/pizza/create" 
-	 			  th:object="${pizza}" 
-	 			  th:insert="~{frag :: form-crud}">
+	 			  th:object="${pizza}" >
+	 			  <div class="mb-3">
+ 				<label class="form-label">Nome:</label>
+ 				<input class="form-control" type="text" name="nome" th:field="*{nome}">
+ 			</div>
+ 			<div class="mb-3">
+ 				<label class="form-label">Descrizione:</label>
+ 				<input class="form-control" type="text" name="descrizione" th:field="*{descrizione}">
+ 			</div>
+ 			<div class="mb-3">
+ 				<label class="form-label">Prezzo:</label>
+ 				<input class="form-control" type="number" name="prezzo" th:field="*{prezzo}">
+ 			</div>
+ 			<label>Promo</label>
+ 				<select name="promozione" class="mb-3">
+ 					<option th:value="null" th:field="${pizza.promozione}">--</option>
+ 					<option
+ 						th:each="promozione : ${promozioni}"
+ 						th:object="${promozione}"
+ 						th:value="*{id}"
+ 						th:field="${pizza.promozione}">
+ 						[[*{titolo}]]
+ 					</option>
+ 				</select>
+				<br>
+ 			<input type="submit" value="save" class="btn btn-success">
+ 			
  			</form>
-		
 		</main>
   	</body>
 </html>
