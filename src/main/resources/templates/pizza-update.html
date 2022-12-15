@@ -19,9 +19,33 @@
 		 			th:object="${pizza}">
 		 			<!--th:field aggancia le proprietà agli input corrispondenti-->
 		 			<input type="number" name="id" th:field="*{id}" class="d-none">
-		 			<div th:insert="~{frag :: form-crud}"></div>
+		 				<div class="mb-3">
+			 				<label class="form-label">Nome:</label>
+			 				<input class="form-control" type="text" name="nome" th:field="*{nome}">
+ 						</div>
+			 			<div class="mb-3">
+			 				<label class="form-label">Descrizione:</label>
+			 				<input class="form-control" type="text" name="descrizione" th:field="*{descrizione}">
+			 			</div>
+			 			<div class="mb-3">
+			 				<label class="form-label">Prezzo:</label>
+			 				<input class="form-control" type="number" name="prezzo" th:field="*{prezzo}">
+			 			</div>
+						<br>
+						<label>Ingredienti</label><br>
+                     <div
+                         th:each="ingrediente : ${ingredienti}"
+                         th:object="${ingrediente}"
+                         class="mb-3">
+                         <input 
+                             type="checkbox" 
+                             name="ingredienti" 
+                             th:value="*{id}" 
+                             th:field="${pizza.ingredienti}">
+                         <label>[[*{nome}]]</label>
+                     </div>
+ 						<input type="submit" value="save" class="btn btn-success">
 	 		</form>
-		
 		</main>	
 	</body>
 </html>

@@ -29,20 +29,34 @@
  				<label class="form-label">Prezzo:</label>
  				<input class="form-control" type="number" name="prezzo" th:field="*{prezzo}">
  			</div>
- 			<label>Promo</label>
- 				<select name="promozione" class="mb-3">
- 					<option th:value="null" th:field="${pizza.promozione}">--</option>
- 					<option
- 						th:each="promozione : ${promozioni}"
- 						th:object="${promozione}"
- 						th:value="*{id}"
- 						th:field="${pizza.promozione}">
- 						[[*{titolo}]]
- 					</option>
- 				</select>
-				<br>
- 			<input type="submit" value="save" class="btn btn-success">
- 			
+ 			<div>
+	 			<label>Promo</label>
+	 				<select name="promozione" class="mb-3 ">
+	 					<option th:value="null" th:field="${pizza.promozione}">--</option>
+	 					<option
+	 						th:each="promozione : ${promozioni}"
+	 						th:object="${promozione}"
+	 						th:value="*{id}"
+	 						th:field="${pizza.promozione}">
+	 						[[*{titolo}]]
+	 					</option>
+	 				</select>
+					<br>
+					<h3>Ingredienti</h3>
+					<br>
+                     <div
+                         th:each="ingrediente : ${ingredienti}"
+                         th:object="${ingrediente}"
+                         class="mb-3">
+                         <input 
+                             type="checkbox" 
+                             name="ingredienti" 
+                             th:value="*{id}" 
+                             th:field="${pizza.ingredienti}">
+                         <label>[[*{nome}]]</label>
+                     </div>
+ 			</div>
+ 			<input type="submit" value="save" class="btn btn-primary">
  			</form>
 		</main>
   	</body>

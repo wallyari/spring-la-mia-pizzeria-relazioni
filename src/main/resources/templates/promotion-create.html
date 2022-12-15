@@ -26,8 +26,7 @@
                      <div
                          th:each="pizza : ${pizzas}"
                          th:object="${pizza}"
-                         class="mb-3"
-                     >
+                         class="mb-3">
                          <input 
                              type="checkbox" 
                              name="pizzas" 
@@ -35,7 +34,7 @@
                              th:field="${promozione.pizzas}">
                          <label>[[*{nome}]]</label>
                      </div>
- 					<button type="submit">Crea</button>
+ 					<button class="btn btn-success" type="submit">Crea</button>
                  </form>
  			</div>
 			

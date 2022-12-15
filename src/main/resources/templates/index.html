@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	 <!-- Bootstrap CSS -->
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/> 
 	<title>Pizzeria</title>
 
 	</head>
@@ -23,6 +24,7 @@
 		 	<th scope="col">Descrizione</th>
 			<th scope="col">Prezzo</th>
 			<th scope="col">Promo</th>
+			<th scope="col">Ingredienti</th>
 			<th scope="col">Azioni</th>
 		</tr>
 		<tr th:each="pizza : ${pizzas}" th:object="${pizza}">
@@ -30,10 +32,11 @@
 			<td th:text="*{descrizione}"></td>
 			<td th:text="*{prezzo}"></td>
 			<td th:text="*{promozione}"></td>
+			<td th:text="*{ingredienti}"></td>
 			<td>
-				<a th:href="@{/pizza/{id}(id=${pizza.id})}" class="btn btn-success text-uppercase">show</a>
-				<a th:href="@{/pizza/update/{id}(id=${pizza.id})}" class="btn btn-primary btn-small text-uppercase">update</a>
-				<a th:href="@{/pizza/delete/{id} (id=*{id})}" class="btn btn-danger btn-small text-uppercase">delete</a>
+				<a th:href="@{/pizza/{id}(id=${pizza.id})}" class="btn btn-success text-uppercase"><i class="fa-solid fa-eye"></i></a>
+				<a th:href="@{/pizza/update/{id}(id=${pizza.id})}" class="btn btn-primary btn-small text-uppercase"><i class="fa-solid fa-pen-to-square"></i></a>
+				<a th:href="@{/pizza/delete/{id} (id=*{id})}" class="btn btn-danger btn-small text-uppercase"><i class="fa-solid fa-trash"></i></a>
 			</td>
 		</tr>
 	</table>

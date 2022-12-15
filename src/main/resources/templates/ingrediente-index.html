@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	 <!-- Bootstrap CSS -->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/> 
+	<title>Ingredienti</title>
+
+	</head>
+	<body>
+	<header th:insert="~{frag :: header-nav}"></header>
+	
+	<main>
+
+	<div class="container p-3 text-center">
+		<div class="d-flex col-12 justify-content-center mb-5">
+			<a th:href="@{/ingrediente/create}" class="btn btn-danger text-uppercase">Aggiungi Ingrediente</a>
+		</div>	
+	<table class="table">
+		<tr>
+			<th scope="col">Nome</th>
+		 	<th scope="col">Pizze</th>
+		 	<th scope="col">Azioni</th>
+
+		</tr>
+		<tr th:each="ingrediente : ${ingredienti}" th:object="${ingrediente}">
+			<td th:text="*{nome}"></td>
+			<td>[[*{pizzas}]]</td>	
+ 			<td>
+ 				<a th:href="@{/ingrediente/update/{id}(id=${ingrediente.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+ 				<a th:href="@{/ingrediente/delete/{id}(id=${ingrediente.id})}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+ 			</td>
+		
+		</tr>
+	</table>
+	<h2 class="text-uppercase"></h2>
+	</div>
+	</main>
+	</body>
+</html>
